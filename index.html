@@ -103,6 +103,36 @@
       color: #00bfff;
       text-decoration: none;
     }
+
+    /* Overlay styles */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none; /* Hidden by default */
+    }
+
+    .notification {
+      background-color: white;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      color: #e91e63;
+      font-family: 'Poppins', sans-serif;
+      max-width: 300px;
+      width: 90%;
+    }
   </style>
 </head>
 <body>
@@ -140,8 +170,15 @@
   </div>
 
   <div class="footer">
-    Official biography | Copyright 
+    Support developers | Copyright 
     <a href="https://donn4try.github.io/donnbio/" target="_blank">donn.4try</a>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay">
+    <div class="notification">
+      Server dalam pengembangan, hubungi developer untuk info lebih lengkap
+    </div>
   </div>
 
   <!-- Audio -->
@@ -154,6 +191,16 @@
   <script>
     const profileImg = document.getElementById("profileImg");
     const bgMusic = document.getElementById("bgMusic");
+    const overlay = document.getElementById("overlay");
+
+    // Ubah ini ke true/false untuk menampilkan atau menyembunyikan overlay
+    const showOverlay = true;
+
+    if (showOverlay) {
+      overlay.style.display = "flex";
+    } else {
+      overlay.style.display = "none";
+    }
 
     profileImg.addEventListener("click", function () {
       bgMusic.play();
